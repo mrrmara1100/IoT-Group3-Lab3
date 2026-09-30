@@ -4,10 +4,10 @@ import machine
 import urequests as requests
 
 # ---------- CONFIG ----------
-WIFI_SSID = ""   # <-- your WiFi name (2.4 GHz only)
-WIFI_PASS = ""   # <-- your WiFi password
+WIFI_SSID = ""  
+WIFI_PASS = ""   
 
-BLYNK_TOKEN = ""  # <-- your Blynk device auth token
+BLYNK_TOKEN = "" 
 BLYNK_API   = "http://blynk.cloud/external/api"
 
 IR_PIN = 13
@@ -25,7 +25,6 @@ def connect_wifi():
         return
 
     while True:
-        # Clear any half-finished connection left over from the last run
         try:
             wifi.disconnect()
         except OSError:
@@ -33,7 +32,7 @@ def connect_wifi():
         wifi.connect(WIFI_SSID, WIFI_PASS)
         print("Connecting to WiFi:", WIFI_SSID)
 
-        for _ in range(20):          # wait up to 20 seconds
+        for _ in range(20):         
             if wifi.isconnected():
                 print("WiFi connected!", wifi.ifconfig()[0])
                 return

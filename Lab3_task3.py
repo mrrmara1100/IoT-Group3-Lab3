@@ -4,10 +4,10 @@ import machine
 import urequests as requests
 
 # ---------- CONFIG ----------
-WIFI_SSID = ""   # <-- your WiFi name (2.4 GHz only)
-WIFI_PASS = ""   # <-- your WiFi password
+WIFI_SSID = ""   
+WIFI_PASS = ""  
 
-BLYNK_TOKEN = ""  # <-- your Blynk device auth token
+BLYNK_TOKEN = ""  
 BLYNK_API   = "http://blynk.cloud/external/api"
 
 IR_PIN    = 13  
@@ -22,7 +22,6 @@ ir = machine.Pin(IR_PIN, machine.Pin.IN)
 servo = machine.PWM(machine.Pin(SERVO_PIN), freq=50)
 
 def set_servo_angle(angle):
-    # 50 Hz -> 20 ms period. 0.5 ms = 0 deg, 2.5 ms = 180 deg
     angle = max(0, min(180, int(angle)))
     pulse_us = 500 + (angle * 2000) // 180
     servo.duty_u16(pulse_us * 65535 // 20000)
@@ -37,7 +36,6 @@ def connect_wifi():
         return
 
     while True:
-        # Clear any half-finished connection left over from the last run
         try:
             wifi.disconnect()
         except OSError:
@@ -45,7 +43,7 @@ def connect_wifi():
         wifi.connect(WIFI_SSID, WIFI_PASS)
         print("Connecting to WiFi:", WIFI_SSID)
 
-        for _ in range(20):          # wait up to 20 seconds
+        for _ in range(20):          
             if wifi.isconnected():
                 print("WiFi connected!", wifi.ifconfig()[0])
                 return
@@ -88,7 +86,7 @@ while True:
         set_servo_angle(CLOSED_ANGLE)
         blynk_write("V0", "Not Detected")
 
-        # Wait until the object has left so one object = one trigger
+        
         while ir.value() == 0:
             time.sleep(0.1)
 

@@ -330,7 +330,7 @@ Both outputs are updated from the same variable at the same moment, so the displ
 ### Evidence
 
 <!-- EVIDENCE: replace PASTE_YOUTUBE_LINK_HERE with the YouTube link -->
-▶️ **[Watch Task 4 on YouTube](PASTE_YOUTUBE_LINK_HERE)** — the TM1637 and the Blynk gauge showing the same count
+▶️ **[Watch Task 4 on YouTube](https://youtu.be/pmpP6NEsR5g)** — the TM1637 and the Blynk gauge showing the same count
 
 ---
 
@@ -361,33 +361,32 @@ Each time through the loop, the board reads V3 first and decides which mode to r
 manual_mode = blynk_read_int(V_MANUAL, 0) == 1
 
 if manual_mode:
-    angle = blynk_read_int(V_SLIDER, current_angle)   # IR ignored, slider in control
+    angle = blynk_read_int(V_SLIDER, current_angle) 
     ...
 elif ir.value() == 0:
-    ...                                               # Task 4 behaviour
+    ...                                       
 ```
 
 In manual mode the code never reads `ir.value()`, which is what "the IR sensor is ignored" means in practice. When the switch goes back to OFF, the servo is sent back to closed so automatic mode always starts from a known position.
 
 ### Evidence
 
-<!-- EVIDENCE: replace PASTE_YOUTUBE_LINK_HERE with the YouTube link -->
-▶️ **[Watch Task 5 on YouTube](PASTE_YOUTUBE_LINK_HERE)** — switching between manual and automatic mode
+▶️ **[Watch Task 5 on YouTube](https://youtu.be/8LwM9OgNZ3k)** — switching between manual and automatic mode
 
 ---
 
 ## Blynk dashboard
 
-<!-- EVIDENCE: replace the line below with your file, e.g. ![screenshot of the completed Blynk web dashboard](Evidence/your_file.png) -->
-> **[ Place evidence here: screenshot of the completed Blynk web dashboard ]**
+| Blynk Web Dashboard | Blynk Mobile App Dashboard |
+|:--:|:--:|
+| ![Blynk](Evidence/Blynk_pic.png) | ![Blynk](Evidence\Blynk_mobile.jpg) |
 
-<!-- EVIDENCE: replace the line below with your file, e.g. ![screenshot of the completed Blynk phone dashboard](Evidence/your_file.png) -->
-> **[ Place evidence here: screenshot of the completed Blynk phone dashboard ]**
+
 
 ## Demonstration video
 
 <!-- EVIDENCE: replace PASTE_YOUTUBE_LINK_HERE with the YouTube link -->
-▶️ **[Watch the full demonstration on YouTube](PASTE_YOUTUBE_LINK_HERE)** — the complete system running from `main.py`
+▶️ **[Watch the full demonstration on YouTube](https://youtu.be/8LwM9OgNZ3k)** — the complete system running from `main.py`
 
 ---
 

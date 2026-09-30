@@ -5,10 +5,10 @@ import urequests as requests
 import TM1637
 
 # ---------- CONFIG ----------
-WIFI_SSID = ""   # <-- your WiFi name (2.4 GHz only)
-WIFI_PASS = ""   # <-- your WiFi password
+WIFI_SSID = ""   
+WIFI_PASS = ""   
 
-BLYNK_TOKEN = ""  # <-- your Blynk device auth token
+BLYNK_TOKEN = "" 
 BLYNK_API   = "http://blynk.cloud/external/api"
 
 IR_PIN      = 13   
@@ -18,7 +18,7 @@ TM_DIO_PIN  = 21
 
 OPEN_ANGLE   = 90
 CLOSED_ANGLE = 0
-OPEN_TIME    = 3    # seconds
+OPEN_TIME    = 3 
 
 V_IR_STATUS = "V0"
 V_SLIDER    = "V1"
@@ -32,7 +32,6 @@ tm = TM1637.TM1637(clk=machine.Pin(TM_CLK_PIN), dio=machine.Pin(TM_DIO_PIN))
 tm.brightness(7)
 
 def set_servo_angle(angle):
-    # 50 Hz -> 20 ms period. 0.5 ms = 0 deg, 2.5 ms = 180 deg
     angle = max(0, min(180, int(angle)))
     pulse_us = 500 + (angle * 2000) // 180
     servo.duty_u16(pulse_us * 65535 // 20000)
@@ -47,7 +46,6 @@ def connect_wifi():
         return
 
     while True:
-        # Clear any half-finished connection left over from the last run
         try:
             wifi.disconnect()
         except OSError:
@@ -55,7 +53,7 @@ def connect_wifi():
         wifi.connect(WIFI_SSID, WIFI_PASS)
         print("Connecting to WiFi:", WIFI_SSID)
 
-        for _ in range(20):          # wait up to 20 seconds
+        for _ in range(20):          
             if wifi.isconnected():
                 print("WiFi connected!", wifi.ifconfig()[0])
                 return
@@ -147,7 +145,6 @@ while True:
         current_angle = CLOSED_ANGLE
         blynk_write(V_IR_STATUS, "Not Detected")
 
-        # Wait until the object has left so one object = one count
         while ir.value() == 0:
             time.sleep(0.1)
 
