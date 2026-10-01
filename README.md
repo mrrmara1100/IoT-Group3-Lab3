@@ -379,7 +379,7 @@ In manual mode the code never reads `ir.value()`, which is what "the IR sensor i
 
 | Blynk Web Dashboard | Blynk Mobile App Dashboard |
 |:--:|:--:|
-| ![Blynk](Evidence/Blynk_pic.png) | ![Blynk](Evidence\Blynk_mobile.png) |
+| ![Blynk](Evidence/Blynk_pic.png) | ![Blynk](Evidence/Blynk_mobile.png) |
 
 
 
